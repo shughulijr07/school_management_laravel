@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="mt-2 mr-5">
         <a href="{{ route('dashboard') }}" class="d-inline-block">
-        <h4 class="text-bold text-white">CHMSC SYSTEM</h4>
+        <h4 class="text-bold text-white">RONIN SYSTEM</h4>
         </a>
     </div>
   {{--  <div class="navbar-brand">
