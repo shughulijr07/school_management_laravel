@@ -20,7 +20,7 @@ class LevelController extends Controller
          }
 
          if($add_level){
-            return redirect()->back();
+            return back()->with('flash_success', __('msg.store_ok'));
          }
     }
 }
