@@ -20,7 +20,7 @@ class LevelController extends Controller
          }
 
          if($add_level){
-            return "added";
+            return redirect()->back();
          }
     }
 }

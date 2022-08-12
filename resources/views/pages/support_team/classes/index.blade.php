@@ -26,6 +26,7 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
+                            {{-- {{$my_classes}} --}}
                             <tbody>
                             @foreach($my_classes as $c)
                                 <tr>
