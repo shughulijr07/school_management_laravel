@@ -158,10 +158,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 /************************ SUPER ADMIN ****************************/
 Route::group(['namespace' => 'SuperAdmin','middleware' => 'super_admin', 'prefix' => 'super_admin'], function(){
-
     Route::get('/settings', 'SettingController@index')->name('settings');
     Route::put('/settings', 'SettingController@update')->name('settings.update');
-
 });
 
 /************************ PARENT ****************************/
@@ -169,4 +167,8 @@ Route::group(['namespace' => 'MyParent','middleware' => 'my_parent',], function(
 
     Route::get('/my_children', 'MyController@children')->name('my_children');
 
+});
+
+Route::controller(LevelController::class)->group(function () {
+    Route::post('/add-level', 'store')->name('add-level');
 });

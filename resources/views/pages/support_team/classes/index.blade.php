@@ -65,7 +65,6 @@
                         <div class="col-md-12">
                             <div class="alert alert-info border-0 alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-
                                 <span>When a class is created, a Section will be automatically created for the class, you can edit it or add more sections to the class at <a target="_blank" href="{{ route('sections.index') }}">Manage Sections</a></span>
                             </div>
                         </div>
@@ -105,7 +104,6 @@
                         <div class="col-md-12">
                             <div class="alert alert-info border-0 alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-
                                 <span>Add new level</a></span>
                             </div>
                         </div>
@@ -113,19 +111,19 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <form class="ajax-store" method="post" action="{{ route('classes.store') }}">
+                            <form  method="post" action="/add-level">
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label font-weight-semibold">Level Name <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Name of Class">
+                                        <input name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Level name">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="class_type_id" class="col-lg-3 col-form-label font-weight-semibold">Level Code</label>
                                     <div class="col-lg-9">
-                                        <input name="code" value="{{ old('code') }}" required type="text" class="form-control" placeholder="Class Code">
+                                        <input name="code" value="{{ old('code') }}" required type="text" class="form-control" placeholder="Level Code">
                                     </div>
                                 </div>
 
@@ -139,7 +137,5 @@
             </div>
         </div>
     </div>
-
     {{--Class List Ends--}}
-
 @endsection

@@ -23,9 +23,7 @@
                 </li>
             </ul>
 
-
             <div class="tab-content">
-
                 @if(Qs::userIsTeamSA())
                 <div class="tab-pane fade show active" id="add-tt">
                    <div class="col-md-8">
