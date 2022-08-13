@@ -170,6 +170,6 @@ Route::group(['namespace' => 'MyParent','middleware' => 'my_parent',], function(
 });
 
 Route::controller(LevelController::class)->group(function () {
+    Route::delete('/delete-level/{level}', 'destroy')->name('delete-level');
     Route::post('/add-level', 'store')->name('add-level');
-    Route::post('/delete-level', 'destroy')->name('delete-level');
 });
