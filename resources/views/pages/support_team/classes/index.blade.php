@@ -13,53 +13,54 @@
                 <li class="nav-item"><a href="#all-classes" class="nav-link active" data-toggle="tab">Manage Classes</a></li>
                 <li class="nav-item"><a href="#new-class" class="nav-link" data-toggle="tab"><i class="icon-plus2"></i> Create New Class</a></li>
                 <li class="nav-item"><a href="#new-level" class="nav-link" data-toggle="tab"><i class="icon-plus2"></i> Create New Level</a></li>
+                <li class="nav-item"><a href="#all-level" class="nav-link" data-toggle="tab">Manage Level</a></li>
             </ul>
 
             <div class="tab-content">
-                    <div class="tab-pane fade show active" id="all-classes">
-                        <table class="table datatable-button-html5-columns">
-                            <thead>
+                <div class="tab-pane fade show active" id="all-classes">
+                    <table class="table datatable-button-html5-columns">
+                        <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Class Type</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        {{-- {{$my_classes}} --}}
+                        <tbody>
+                        @foreach($my_classes as $c)
                             <tr>
-                                <th>S/N</th>
-                                <th>Name</th>
-                                <th>Class Type</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            {{-- {{$my_classes}} --}}
-                            <tbody>
-                            @foreach($my_classes as $c)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $c->name }}</td>
-                                    <td>{{ $c->class_type->name }}</td>
-                                    <td class="text-center">
-                                        <div class="list-icons">
-                                            <div class="dropdown">
-                                                <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $c->name }}</td>
+                                <td>{{ $c->class_type->name }}</td>
+                                <td class="text-center">
+                                    <div class="list-icons">
+                                        <div class="dropdown">
+                                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
 
-                                                <div class="dropdown-menu dropdown-menu-left">
-                                                    @if(Qs::userIsTeamSA())
-                                                    {{--Edit--}}
-                                                    <a href="{{ route('classes.edit', $c->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
-                                                   @endif
-                                                        @if(Qs::userIsSuperAdmin())
-                                                    {{--Delete--}}
-                                                    <a id="{{ $c->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
-                                                    <form method="post" id="item-delete-{{ $c->id }}" action="{{ route('classes.destroy', $c->id) }}" class="hidden">@csrf @method('delete')</form>
-                                                        @endif
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                @if(Qs::userIsTeamSA())
+                                                {{--Edit--}}
+                                                <a href="{{ route('classes.edit', $c->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                @endif
+                                                    @if(Qs::userIsSuperAdmin())
+                                                {{--Delete--}}
+                                                <a id="{{ $c->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                <form method="post" id="item-delete-{{ $c->id }}" action="{{ route('classes.destroy', $c->id) }}" class="hidden">@csrf @method('delete')</form>
+                                                    @endif
 
-                                                </div>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="tab-pane fade" id="new-class">
                     <div class="row">
@@ -134,6 +135,49 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="all-level">
+                    <table class="table datatable-button-html5-columns">
+                        <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Level Name</th>
+                            <th>Level Code</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        {{-- {{$class_types}} --}}
+                        <tbody>
+                        @foreach($class_types  as $level)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $level->name }}</td>
+                                <td>{{ $level->code }}</td>
+                                <td class="text-center">
+                                    <div class="list-icons">
+                                        <div class="dropdown">
+                                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                @if(Qs::userIsTeamSA())
+                                                {{--Edit--}}
+                                                <a href="{{ route('classes.edit', $level->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                               @endif
+                                                    @if(Qs::userIsSuperAdmin())
+                                                {{--Delete--}}
+                                                <a id="{{ $c->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                <form method="post" id="item-delete-{{ $level->id }}" action="{{ route('classes.destroy', $level->id) }}" class="hidden">@csrf @method('delete')</form>
+                                                    @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
