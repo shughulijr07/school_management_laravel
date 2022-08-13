@@ -23,4 +23,12 @@ class LevelController extends Controller
             return back()->with('flash_success', __('msg.store_ok'));
          }
     }
+
+    public function destroy($id){
+         $delete = ClassType::destroy($id);
+
+         if ($delete) {
+            return back()->with('flash_success', __('msg.store_od'));
+         }
+    }
 }
